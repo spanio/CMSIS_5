@@ -55,7 +55,7 @@ static uint32_t isr_queue_put (os_object_t *object) {
   } else {
     ret = 0U;
   }
-  
+
   if (primask == 0U) {
     __enable_irq();
   }
@@ -116,9 +116,14 @@ static os_object_t *isr_queue_get (void) {
 //lint -esym(714,osRtxTick_Handler) "Referenced by Exception handlers"
 //lint -esym(759,osRtxTick_Handler) "Prototype in header"
 //lint -esym(765,osRtxTick_Handler) "Global scope"
+
+volatile extern unsigned int SEGGER_SYSVIEW_TickCnt;
 void osRtxTick_Handler (void) {
   os_thread_t *thread;
 
+  SEGGER_SYSVIEW_TickCnt++;
+
+  // Used for systemview profiling
   OS_Tick_AcknowledgeIRQ();
   osRtxInfo.kernel.tick++;
 
