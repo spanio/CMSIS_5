@@ -47,7 +47,7 @@ mbed-host-tests==1.8.11
 mbed-ls==1.8.8
 mbed-os-tools==1.8.8
 milksnake==0.1.5
-numpy==1.19.5
+numpy==1.22.0
 oauthlib==3.1.1
 opt-einsum==3.3.0
 packaging==21.0
